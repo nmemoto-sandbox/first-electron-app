@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 const path = require('path')
 require('electron-reload')(__dirname, {
@@ -16,6 +16,21 @@ function createWindow () {
   win.on('closed', () => {
     win = null
   })
+
+  const template = [
+    {
+      label: 'electron',
+      submenu: [
+        { label: 'Preferences' },
+        { type: 'separator' },
+        { label: 'log', click() {
+          console.log("log item clicked")
+        }}
+      ]
+    }
+  ]
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
 }
 
 app.on('ready', createWindow)
