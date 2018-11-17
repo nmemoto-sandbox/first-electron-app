@@ -4,7 +4,7 @@ let win
 
 function createWindow () {
   win = new BrowserWindow({ width: 800, height: 600 })
-  win.loadFile('index.html')
+  win.loadFile('src/index.html')
 
   win.webContents.openDevTools()
 
